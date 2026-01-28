@@ -86,9 +86,9 @@ const Footer = () => {
 
                 {/* কচিরাইট অংশ */}
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-gray-500 text-xs md:text-sm font-medium">
-                    <p>© 2026 AI Automation. সর্বস্বত্ব সংরক্ষিত।</p>
+                    <p>© 2026 AI Automation. All rights reserved.</p>
                     <div className="flex items-center gap-6">
-                        <p>তৈরি করেছেন: <span className="text-[#00E5FF]">NeonCode</span></p>
+                        <p>Developed by: <span className="text-[#00E5FF]">NeonCode</span></p>
                     </div>
                 </div>
             </div>

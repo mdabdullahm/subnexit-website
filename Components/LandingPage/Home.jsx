@@ -7,6 +7,7 @@ import {
     MousePointer2, Layout, Calendar, Video, Music, TrendingUp, Monitor, Rocket, Cpu,
     ChevronDown, HelpCircle, Phone
 } from "lucide-react";
+import Link from 'next/link';
 
 // ১. সংখ্যাকে বাংলায় রূপান্তর
 const toBengali = (n) => {
@@ -145,8 +146,8 @@ const HomePage = () => {
                     সময় বাঁচান, আপনার বিক্রি কয়েক গুণ বাড়িয়ে নিন।
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-5 mb-16">
-                    <button className="flex items-center justify-center gap-3 px-10 py-4 bg-[#00E5FF] text-black font-black text-lg rounded-2xl shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:scale-105 transition-all active:scale-95">শুরু করুন <ArrowRight size={20} /></button>
-                    <button className="px-10 py-4 bg-black/40 border border-white/10 text-white font-bold text-lg rounded-2xl hover:bg-white/5 backdrop-blur-md transition-all">ডেমো দেখুন</button>
+                    <Link href="/landingpagesignup" className="flex items-center justify-center gap-3 px-10 py-4 bg-[#00E5FF] text-black font-black text-lg rounded-2xl shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:scale-105 transition-all active:scale-95">শুরু করুন <ArrowRight size={20} /></Link>
+                    <a href="#features-section" className="px-10 py-4 bg-black/40 border border-white/10 text-white font-bold text-lg rounded-2xl hover:bg-white/5 backdrop-blur-md transition-all">ডেমো দেখুন</a>
                 </div>
                 <div className="max-w-5xl mx-auto border-t border-white/5 pt-2 grid grid-cols-2 md:grid-cols-4 text-center">
                     <div className="py-4"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={1000} suffix="+" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">ব্যবহারকারী</p></div>
@@ -157,7 +158,7 @@ const HomePage = () => {
             </section>
 
             {/* বাটন ট্যাব */}
-            <section className="relative z-20 py-6 container mx-auto flex justify-center overflow-x-auto no-scrollbar pb-10">
+            <section id="features-section" className="relative z-20 py-6 container mx-auto flex justify-center overflow-x-auto no-scrollbar pb-10">
                 <div className="flex gap-2 p-2 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl">
                     {tabs.map((tab) => (
                         <button key={tab.id} onClick={() => setActiveTab(tab.id)}

@@ -57,7 +57,8 @@ const Navbar = () => {
           <Link href="/" className="block text-gray-300 hover:text-cyan-400 text-lg">হোম</Link>
           <Link href="#services" className="block text-gray-300 hover:text-cyan-400 text-lg">সার্ভিস</Link>
           <Link href="#pricing" className="block text-gray-300 hover:text-cyan-400 text-lg">প্রাইসিং</Link>
-          <Link href="/landingpagesignup" className="w-full bg-cyan-500 text-black font-bold py-3 rounded-xl mt-4">সাইনআপ</Link>
+          <Link href="#faq" className="hover:text-cyan-400 transition-colors">প্রশ্নাবলী</Link>
+          <Link href="/landingpagesignup" className="w-full bg-cyan-500 text-black font-bold py-3 px-3 rounded-xl mt-4">সাইনআপ</Link>
         </div>
       )}
     </nav>
