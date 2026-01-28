@@ -12,9 +12,10 @@ const Navbar = () => {
           
           {/* Logo Area */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="text-2xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent tracking-tighter">
+            <img className='w-10 h-10' src="/navlogo/logo.png" alt="" />
+            <p className="text-2xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent tracking-tighter">
               AI AUTOMATION
-            </Link>
+            </p>
           </div>
 
           {/* Desktop Menu */}
@@ -31,7 +32,7 @@ const Navbar = () => {
               লগইন
             </Link>
             <Link href="/landingpagesignup" className="bg-cyan-500 hover:bg-cyan-600 text-black px-6 py-2 rounded-full font-bold shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all transform hover:scale-105">
-              শুরু করুন
+              সাইনআপ
             </Link>
           </div>
 
@@ -56,7 +57,7 @@ const Navbar = () => {
           <Link href="/" className="block text-gray-300 hover:text-cyan-400 text-lg">হোম</Link>
           <Link href="#services" className="block text-gray-300 hover:text-cyan-400 text-lg">সার্ভিস</Link>
           <Link href="#pricing" className="block text-gray-300 hover:text-cyan-400 text-lg">প্রাইসিং</Link>
-          <Link href="/landingpagesignup" className="w-full bg-cyan-500 text-black font-bold py-3 rounded-xl mt-4">শুরু করুন</Link>
+          <Link href="/landingpagesignup" className="w-full bg-cyan-500 text-black font-bold py-3 rounded-xl mt-4">সাইনআপ</Link>
         </div>
       )}
     </nav>

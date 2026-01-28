@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  MessageCircle, MessageSquare, Image as ImageIcon, Film, Package, 
-  ArrowRight, Zap, CheckCircle2, Clock, BarChart3, ShieldCheck, Headset, 
-  MousePointer2, Layout, Calendar, Video, Music, TrendingUp, Monitor, Rocket, Cpu, 
-  ChevronDown, HelpCircle, Phone
+import {
+    MessageCircle, MessageSquare, Image as ImageIcon, Film, Package,
+    ArrowRight, Zap, CheckCircle2, Clock, BarChart3, ShieldCheck, Headset,
+    MousePointer2, Layout, Calendar, Video, Music, TrendingUp, Monitor, Rocket, Cpu,
+    ChevronDown, HelpCircle, Phone
 } from "lucide-react";
 
 // ১. সংখ্যাকে বাংলায় রূপান্তর
@@ -133,15 +133,22 @@ const HomePage = () => {
     return (
         <main className="w-full relative bg-[#020617] text-white min-h-screen overflow-hidden pb-32">
             <MouseGlow />
-            
+
             {/* Hero Section */}
             <section className="relative z-10 pt-32 pb-10 container mx-auto px-6 text-center">
+                {/* Corner decoration color */}
+                <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-blue-600/25 rounded-full blur-[120px] pointer-events-none z-0" />
+                <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none z-0" />
                 <h1 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter">সোশ্যাল মিডিয়া <br /> <span className="text-[#00E5FF]">অটোমেশন</span></h1>
+                <p className="text-gray-400 text-base md:text-xl max-w-2xl mx-auto mb-8 font-medium opacity-80">
+                    AI দিয়ে আপনার ফেসবুক ও ইন্সটাগ্রাম বিজনেস অটোমেট করুন। <br className="hidden md:block" />
+                    সময় বাঁচান, আপনার বিক্রি কয়েক গুণ বাড়িয়ে নিন।
+                </p>
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-5 mb-16">
                     <button className="flex items-center justify-center gap-3 px-10 py-4 bg-[#00E5FF] text-black font-black text-lg rounded-2xl shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:scale-105 transition-all active:scale-95">শুরু করুন <ArrowRight size={20} /></button>
                     <button className="px-10 py-4 bg-black/40 border border-white/10 text-white font-bold text-lg rounded-2xl hover:bg-white/5 backdrop-blur-md transition-all">ডেমো দেখুন</button>
                 </div>
-                <div className="max-w-5xl mx-auto border-t border-white/5 pt-8 grid grid-cols-2 md:grid-cols-4 text-center">
+                <div className="max-w-5xl mx-auto border-t border-white/5 pt-2 grid grid-cols-2 md:grid-cols-4 text-center">
                     <div className="py-4"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={1000} suffix="+" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">ব্যবহারকারী</p></div>
                     <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={50} suffix="কে+" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">অটো রেসপন্স</p></div>
                     <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={99} suffix=".৯%" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">আপটাইম</p></div>
@@ -154,9 +161,8 @@ const HomePage = () => {
                 <div className="flex gap-2 p-2 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl">
                     {tabs.map((tab) => (
                         <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center gap-2 px-6 py-3 rounded-xl text-[12px] md:text-[14px] font-bold transition-all ${
-                                activeTab === tab.id ? 'bg-[#00E5FF] text-black shadow-[0_0_30px_rgba(0,229,255,0.6)] scale-105' : 'text-gray-400 hover:text-white'
-                            }`}
+                            className={`flex items-center gap-2 px-6 py-3 rounded-xl text-[12px] md:text-[14px] font-bold transition-all ${activeTab === tab.id ? 'bg-[#00E5FF] text-black shadow-[0_0_30px_rgba(0,229,255,0.6)] scale-105' : 'text-gray-400 hover:text-white'
+                                }`}
                         >
                             {tab.icon} {tab.label}
                         </button>
@@ -186,7 +192,7 @@ const HomePage = () => {
                         <div className="grid md:grid-cols-3 gap-8 mt-16 max-w-6xl mx-auto text-left">
                             {current.pricing.map((plan, i) => (
                                 <div key={i} onClick={() => setSelectedPlan(i)} className={`relative p-10 rounded-[2.5rem] bg-[#050c18] border transition-all duration-500 flex flex-col cursor-pointer ${selectedPlan === i ? 'border-[#00E5FF] ring-1 ring-[#00E5FF] shadow-[0_0_50px_rgba(0,229,255,0.15)]' : 'border-white/5'} ${plan.popular ? 'scale-105 z-10' : ''}`}>
-                                    {plan.popular && <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#00E5FF] text-black text-[10px] font-black px-4 py-1 rounded-full shadow-[0_0_15px_rgba(0,229,255,0.5)]">জনপ্রিয়</div>}
+                                    {/* {plan.popular && <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#00E5FF] text-black text-[10px] font-black px-4 py-1 rounded-full shadow-[0_0_15px_rgba(0,229,255,0.5)]">জনপ্রিয়</div>} */}
                                     <div className="mb-10"><h3 className="text-2xl font-black">{plan.name}</h3><p className="text-gray-500 font-bold text-xs uppercase tracking-widest">{plan.bng}</p></div>
                                     <div className="mb-12 flex items-baseline gap-1">{plan.isContact ? <span className="text-3xl md:text-5xl font-black text-[#00E5FF]">Contact Us</span> : <><span className="text-5xl md:text-7xl font-black text-[#00E5FF]">৳{plan.price}</span><span className="text-gray-500 font-bold text-sm">/মাস</span></>}</div>
                                     <div className="space-y-5 mb-14 flex-grow">{plan.perks.map((p, pi) => (<div key={pi} className="flex items-center gap-3 text-sm md:text-base text-gray-300 font-medium"><CheckCircle2 size={18} className="text-[#00E5FF] flex-shrink-0" /> {p}</div>))}</div>
@@ -208,7 +214,7 @@ const HomePage = () => {
                 <div className="space-y-4">
                     {faqData.map((faq, index) => (
                         <div key={index} className="border border-white/5 rounded-3xl bg-white/[0.02] overflow-hidden transition-all hover:border-[#00E5FF]/20">
-                            <button 
+                            <button
                                 onClick={() => setOpenFaq(openFaq === index ? null : index)}
                                 className="w-full p-6 md:p-8 flex items-center justify-between text-left transition-colors group"
                             >
@@ -220,7 +226,7 @@ const HomePage = () => {
                                         {faq.q}
                                     </span>
                                 </div>
-                                <motion.div 
+                                <motion.div
                                     animate={{ rotate: openFaq === index ? 180 : 0 }}
                                     className="text-gray-500"
                                 >
@@ -250,43 +256,43 @@ const HomePage = () => {
                 </div>
             </section>
             <section className="relative z-10 py-10 container mx-auto px-6">
-            <div className="max-w-6xl mx-auto rounded-[2.5rem] bg-gradient-to-r from-[#00ffd5] via-[#00e1ff] to-[#00a2ff] p-10 md:p-20 text-center text-black overflow-hidden relative">
-                
-                {/* কন্টেন্ট */}
-                <div className="relative z-10">
-                    <h2 className="text-3xl md:text-6xl font-black mb-6 leading-tight">
-                        Enterprise? আমাদের সাথে যোগাযোগ করুন
-                    </h2>
-                    
-                    <p className="max-w-3xl mx-auto text-sm md:text-lg font-bold mb-10 opacity-80 leading-relaxed">
-                        বড় ব্যবসা বা এজেন্সির জন্য কাস্টম সলিউশন দরকার? আমাদের টিমের সাথে কথা বলুন <br className="hidden md:block" /> 
-                        এবং আপনার প্রয়োজন অনুযায়ী প্ল্যান তৈরি করুন।
-                    </p>
+                <div className="max-w-6xl mx-auto rounded-[2.5rem] bg-gradient-to-r from-[#00ffd5] via-[#00e1ff] to-[#00a2ff] p-10 md:p-20 text-center text-black overflow-hidden relative">
 
-                    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-10">
-                        {/* হোয়াটসঅ্যাপ বাটন */}
-                        <button className="flex items-center gap-3 px-8 py-4 bg-black text-white rounded-2xl font-bold hover:bg-black/80 transition-all shadow-xl">
-                            <MessageCircle size={20} />
-                            WhatsApp এ মেসেজ করুন
-                        </button>
-                        
-                        {/* ডেমো বা অন্য কোনো বাটন */}
-                        <button className="px-10 py-4 bg-black text-white rounded-2xl font-bold hover:bg-black/80 transition-all shadow-xl">
-                            সরাসরি কথা বলুন
-                        </button>
+                    {/* কন্টেন্ট */}
+                    <div className="relative z-10">
+                        <h2 className="text-3xl md:text-6xl font-black mb-6 leading-tight">
+                            Enterprise? আমাদের সাথে যোগাযোগ করুন
+                        </h2>
+
+                        <p className="max-w-3xl mx-auto text-sm md:text-lg font-bold mb-10 opacity-80 leading-relaxed">
+                            বড় ব্যবসা বা এজেন্সির জন্য কাস্টম সলিউশন দরকার? আমাদের টিমের সাথে কথা বলুন <br className="hidden md:block" />
+                            এবং আপনার প্রয়োজন অনুযায়ী প্ল্যান তৈরি করুন।
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-10">
+                            {/* হোয়াটসঅ্যাপ বাটন */}
+                            <button className="flex items-center gap-3 px-8 py-4 bg-black text-white rounded-2xl font-bold hover:bg-black/80 transition-all shadow-xl">
+                                <MessageCircle size={20} />
+                                WhatsApp এ মেসেজ করুন
+                            </button>
+
+                            {/* ডেমো বা অন্য কোনো বাটন */}
+                            <button className="px-10 py-4 bg-black text-white rounded-2xl font-bold hover:bg-black/80 transition-all shadow-xl">
+                                সরাসরি কথা বলুন
+                            </button>
+                        </div>
+
+                        {/* সাপোর্ট লাইন */}
+                        <div className="flex items-center justify-center gap-2 font-bold opacity-70">
+                            <Phone size={18} />
+                            <span className="text-sm md:text-base">সাপোর্ট: ২৪/৭ উপলব্ধ</span>
+                        </div>
                     </div>
 
-                    {/* সাপোর্ট লাইন */}
-                    <div className="flex items-center justify-center gap-2 font-bold opacity-70">
-                        <Phone size={18} />
-                        <span className="text-sm md:text-base">সাপোর্ট: ২৪/৭ উপলব্ধ</span>
-                    </div>
+                    {/* ব্যাকগ্রাউন্ড ডেকোরেশন (হালকা গ্লো) */}
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 blur-[100px] -z-0" />
                 </div>
-
-                {/* ব্যাকগ্রাউন্ড ডেকোরেশন (হালকা গ্লো) */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 blur-[100px] -z-0" />
-            </div>
-        </section>
+            </section>
         </main>
     );
 };
