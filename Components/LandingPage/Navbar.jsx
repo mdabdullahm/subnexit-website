@@ -27,12 +27,12 @@ const Navbar = () => {
 
           {/* Right side buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-white hover:text-cyan-400 font-medium px-4 py-2 transition">
+            <Link href="/landingpagelogin" className="text-white hover:text-cyan-400 font-medium px-4 py-2 transition">
               লগইন
-            </button>
-            <button className="bg-cyan-500 hover:bg-cyan-600 text-black px-6 py-2 rounded-full font-bold shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all transform hover:scale-105">
+            </Link>
+            <Link href="/landingpagesignup" className="bg-cyan-500 hover:bg-cyan-600 text-black px-6 py-2 rounded-full font-bold shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all transform hover:scale-105">
               শুরু করুন
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
