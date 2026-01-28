@@ -7,9 +7,9 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-black/60 backdrop-blur-lg border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
         <div className="flex justify-between items-center h-20">
-          
+
           {/* Logo Area */}
           <div className="flex-shrink-0 flex items-center">
             <img className='w-10 h-10' src="/navlogo/logo.png" alt="" />
@@ -53,12 +53,17 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="md:hidden bg-black/95 border-b border-white/10 px-4 pt-2 pb-6 space-y-4">
+        <div className="md:hidden bg-black/95 border-b border-white/10 px-4 pt-2 pb-6 space-y-4 flex flex-col">
           <Link href="/" className="block text-gray-300 hover:text-cyan-400 text-lg">হোম</Link>
           <Link href="#services" className="block text-gray-300 hover:text-cyan-400 text-lg">সার্ভিস</Link>
           <Link href="#pricing" className="block text-gray-300 hover:text-cyan-400 text-lg">প্রাইসিং</Link>
-          <Link href="#faq" className="hover:text-cyan-400 transition-colors">প্রশ্নাবলী</Link>
-          <Link href="/landingpagesignup" className="w-full bg-cyan-500 text-black font-bold py-3 px-3 rounded-xl mt-4">সাইনআপ</Link>
+          {/* এখানে block যোগ করা হয়েছে */}
+          <Link href="#faq" className="block text-gray-300 hover:text-cyan-400 text-lg transition-colors">প্রশ্নাবলী</Link>
+
+          {/* এখানে block এবং text-center যোগ করা হয়েছে যাতে বাটনটি মাঝখানে এবং পুরো চওড়া হয় */}
+          <Link href="/landingpagesignup" className="block w-full bg-cyan-500 text-black font-bold py-3 px-4 rounded-xl mt-4 text-center shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+            সাইনআপ
+          </Link>
         </div>
       )}
     </nav>

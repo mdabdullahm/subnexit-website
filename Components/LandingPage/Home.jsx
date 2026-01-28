@@ -11,7 +11,7 @@ import Link from 'next/link';
 
 // ১. সংখ্যাকে বাংলায় রূপান্তর
 const toBengali = (n) => {
-    const digits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+    const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
     return n.toString().replace(/\d/g, (d) => digits[d]);
 };
 
@@ -51,6 +51,7 @@ const HomePage = () => {
     const [activeTab, setActiveTab] = useState('comment');
     const [selectedPlan, setSelectedPlan] = useState(null);
     const [openFaq, setOpenFaq] = useState(0); // প্রথম প্রশ্নটি খোলা থাকবে
+    const [activeHeroBtn, setActiveHeroBtn] = useState("start");
 
     useEffect(() => {
         setSelectedPlan(null);
@@ -128,7 +129,6 @@ const HomePage = () => {
         { q: "আমি কি পরে প্ল্যান আপডেট করতে পারবো?", a: "জি অবশ্যই! আপনি যেকোনো সময় আপনার বর্তমান প্ল্যান থেকে উচ্চতর প্ল্যানে মাইগ্রেট করতে পারবেন। আমাদের ড্যাশবোর্ড থেকে খুব সহজেই এটি করা সম্ভব অথবা আমাদের সাপোর্ট টিমের সাহায্য নিতে পারেন।" },
         { q: "এন্টারপ্রাইজ প্ল্যানে কী কী পাওয়া যায়?", a: "এন্টারপ্রাইজ প্ল্যানটি মূলত বড় এজেন্সির জন্য। এতে আপনি আনলিমিটেড মেসেজ ও কমেন্ট প্রোসেসিং সুবিধা পাবেন। এছাড়া আপনার বিজনেসের জন্য কাস্টম এআই মডেল এবং একজন ডেডিকেটেড সাপোর্ট ম্যানেজার নিয়োগ দেওয়া হবে।" }
     ];
-
     const current = contentData[activeTab];
 
     return (
@@ -145,27 +145,76 @@ const HomePage = () => {
                     AI দিয়ে আপনার ফেসবুক ও ইন্সটাগ্রাম বিজনেস অটোমেট করুন। <br className="hidden md:block" />
                     সময় বাঁচান, আপনার বিক্রি কয়েক গুণ বাড়িয়ে নিন।
                 </p>
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-5 mb-16">
-                    <Link href="/landingpagesignup" className="flex items-center justify-center gap-3 px-10 py-4 bg-[#00E5FF] text-black font-black text-lg rounded-2xl shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:scale-105 transition-all active:scale-95">শুরু করুন <ArrowRight size={20} /></Link>
-                    <a href="#features-section" className="px-10 py-4 bg-black/40 border border-white/10 text-white font-bold text-lg rounded-2xl hover:bg-white/5 backdrop-blur-md transition-all">ডেমো দেখুন</a>
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-5 mb-16 relative z-10">
+                    <Link
+                        href="/landingpagesignup"
+                        onClick={() => setActiveHeroBtn("start")}
+                        className={`flex items-center justify-center gap-3 px-10 py-4 font-black text-lg rounded-2xl transition-all duration-300 ${activeHeroBtn === "start"
+                            ? "bg-[#00E5FF] text-black shadow-[0_0_30px_rgba(0,229,255,0.4)] scale-105"
+                            : "bg-black/40 text-white border border-white/10 hover:bg-white/5"
+                            }`}
+                    >
+                        শুরু করুন <ArrowRight size={20} />
+                    </Link>
+
+                    <a
+                        href="#features-section"
+                        onClick={() => setActiveHeroBtn("demo")}
+                        className={`px-10 py-4 font-bold text-lg rounded-2xl backdrop-blur-md transition-all duration-300 ${activeHeroBtn === "demo"
+                            ? "bg-[#00E5FF] text-black shadow-[0_0_30px_rgba(0,229,255,0.4)] scale-105"
+                            : "bg-black/40 text-white border border-white/10 hover:bg-white/5"
+                            }`}
+                    >
+                        ডেমো দেখুন
+                    </a>
                 </div>
                 <div className="max-w-5xl mx-auto border-t border-white/5 pt-2 grid grid-cols-2 md:grid-cols-4 text-center">
                     <div className="py-4"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={1000} suffix="+" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">ব্যবহারকারী</p></div>
                     <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={50} suffix="কে+" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">অটো রেসপন্স</p></div>
-                    <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={99} suffix=".৯%" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">আপটাইম</p></div>
-                    <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={24} suffix="/৭" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">সাপোর্ট</p></div>
+                    <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={99} suffix=".9%" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">আপটাইম</p></div>
+                    <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={24} suffix="/7" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">সাপোর্ট</p></div>
                 </div>
             </section>
 
-            {/* বাটন ট্যাব */}
+            {/* বাটন ট্যাব সেকশন */}
             <section id="features-section" className="relative z-20 py-6 container mx-auto flex justify-center overflow-x-auto no-scrollbar pb-10">
                 <div className="flex gap-2 p-2 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl">
                     {tabs.map((tab) => (
-                        <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center gap-2 px-6 py-3 rounded-xl text-[12px] md:text-[14px] font-bold transition-all ${activeTab === tab.id ? 'bg-[#00E5FF] text-black shadow-[0_0_30px_rgba(0,229,255,0.6)] scale-105' : 'text-gray-400 hover:text-white'
+                        <button
+                            key={tab.id}
+                            onClick={() => setActiveTab(tab.id)}
+                            className={`relative px-6 py-3 rounded-xl text-[12px] md:text-[14px] font-bold transition-colors duration-200 overflow-hidden ${activeTab === tab.id ? 'text-black' : 'text-gray-400 hover:text-white'
                                 }`}
+                            style={{ WebkitTapHighlightColor: "transparent" }}
                         >
-                            {tab.icon} {tab.label}
+                            {/* অ্যাক্টিভ ট্যাবের ব্যাকগ্রাউন্ড এবং ঢেউ এনিমেশন */}
+                            {activeTab === tab.id && (
+                                <motion.div
+                                    layoutId="activeTabBg"
+                                    // মূল ব্যাকগ্রাউন্ড কালার (সায়ান)
+                                    className="absolute inset-0 bg-[#00E5FF] shadow-[0_0_20px_rgba(0,229,255,0.4)] rounded-xl overflow-hidden"
+                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                >
+                                    {/* এই অংশটি চোখে পড়ার মতো হলুদ ঢেউ তৈরি করবে */}
+                                    <motion.div
+                                        // পরিবর্তন এখানে: via-white/60 এর বদলে via-yellow-300/80 ব্যবহার করা হয়েছে
+                                        className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-yellow-300/80 to-transparent skew-x-[-20deg]"
+                                        initial={{ x: '-150%' }}
+                                        animate={{ x: '150%' }}
+                                        transition={{
+                                            repeat: Infinity,
+                                            duration: 1.3, // গতি একটু বাড়িয়ে দেওয়া হয়েছে
+                                            ease: "linear",
+                                            repeatDelay: 0.1
+                                        }}
+                                    />
+                                </motion.div>
+                            )}
+
+                            {/* টেক্সট এবং আইকন */}
+                            <span className="relative z-10 flex items-center gap-2">
+                                {tab.icon} {tab.label}
+                            </span>
                         </button>
                     ))}
                 </div>
