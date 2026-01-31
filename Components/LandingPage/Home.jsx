@@ -48,6 +48,20 @@ const MouseGlow = () => {
 };
 
 const HomePage = () => {
+// logo png
+    const logos = [
+    "/AB Property.png",
+    "/Astha Bazar.png",
+    "/Ayush Homes.png",
+    "/Ayush Shop.png",
+    "/Shahera Mart.png",
+    "/yusha quick mart.png",
+  ];
+
+  // লুপটি স্মুথ রাখার জন্য লোগোর লিস্টটি ডাবল করে নিচ্ছি
+  const duplicatedLogos = [...logos, ...logos];
+
+
     const [activeTab, setActiveTab] = useState('comment');
     const [selectedPlan, setSelectedPlan] = useState(null);
     const [openFaq, setOpenFaq] = useState(0); // প্রথম প্রশ্নটি খোলা থাকবে
@@ -170,11 +184,52 @@ const HomePage = () => {
                 </div>
                 <div className="max-w-5xl mx-auto border-t border-white/5 pt-2 grid grid-cols-2 md:grid-cols-4 text-center">
                     <div className="py-4"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={1000} suffix="+" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">ব্যবহারকারী</p></div>
-                    <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={50} suffix="কে+" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">অটো রেসপন্স</p></div>
+                    <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={50} suffix="Ke+" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">অটো রেসপন্স</p></div>
                     <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={99} suffix=".9%" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">আপটাইম</p></div>
                     <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={24} suffix="/7" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">সাপোর্ট</p></div>
                 </div>
             </section>
+            {/* logo section */}
+            <section className="py-10 bg-gray-50 overflow-hidden">
+      <div className="container mx-auto px-4 mb-8 text-center">
+        <h2 className="text-2xl font-bold">আমাদের পার্টনারসমূহ</h2>
+      </div>
+
+      {/* স্লাইডার কন্টেইনার */}
+      <div className="relative flex overflow-hidden">
+        <motion.div
+          className="flex whitespace-nowrap"
+          animate={{
+            x: ["0%", "-50%"], // বাম দিকে স্লাইড হবে
+          }}
+          transition={{
+            duration: 20, // স্পিড কন্ট্রোল (যত বাড়বে তত ধীরে চলবে)
+            ease: "linear",
+            repeat: Infinity,
+          }}
+        >
+          {duplicatedLogos.map((logo, index) => (
+            <motion.div
+              key={index}
+              className="mx-8 w-40 h-24 flex items-center justify-center bg-white rounded-lg shadow-sm border p-4 cursor-pointer"
+              // 3D Animation on Hover
+              whileHover={{ 
+                rotateY: 180, 
+                scale: 1.1,
+                transition: { duration: 0.6 } 
+              }}
+              style={{ perspective: 1000 }} // 3D গভীরতার জন্য
+            >
+              <img
+                src={logo}
+                alt="Partner Logo"
+                className="max-w-full max-h-full object-contain"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
 
             {/* বাটন ট্যাব সেকশন */}
             <section id="features-section" className="relative z-20 py-6 container mx-auto flex justify-center overflow-x-auto no-scrollbar pb-10">
