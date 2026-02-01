@@ -48,18 +48,18 @@ const MouseGlow = () => {
 };
 
 const HomePage = () => {
-// logo png
+    // logo png
     const logos = [
-    "/AB Property.png",
-    "/Astha Bazar.png",
-    "/Ayush Homes.png",
-    "/Ayush Shop.png",
-    "/Shahera Mart.png",
-    "/yusha quick mart.png",
-  ];
+        "/AB Property.png",
+        "/Astha Bazar.png",
+        "/Ayush Homes.png",
+        "/Ayush Shop.png",
+        "/Shahera Mart.png",
+        "/yusha quick mart.png",
+    ];
 
-  // লুপটি স্মুথ রাখার জন্য লোগোর লিস্টটি ডাবল করে নিচ্ছি
-  const duplicatedLogos = [...logos, ...logos];
+    // লুপটি স্মুথ রাখার জন্য লোগোর লিস্টটি ডাবল করে নিচ্ছি
+    const duplicatedLogos = [...logos, ...logos];
 
 
     const [activeTab, setActiveTab] = useState('comment');
@@ -150,7 +150,7 @@ const HomePage = () => {
     const current = contentData[activeTab];
 
     return (
-        <main className="w-full relative bg-[#020617] text-white min-h-screen overflow-hidden pb-32">
+        <main className="w-full relative bg-[#020617] text-white min-h-screen overflow-x-clip pb-32">
             <MouseGlow />
 
             {/* Hero Section */}
@@ -188,98 +188,97 @@ const HomePage = () => {
                 </div>
                 <div className="max-w-5xl mx-auto border-t border-white/5 pt-2 grid grid-cols-2 md:grid-cols-4 text-center">
                     <div className="py-4"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={1000} suffix="+" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">ব্যবহারকারী</p></div>
-                    <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={50} suffix="Ke+" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">অটো রেসপন্স</p></div>
+                    <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={50} suffix="K+" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">অটো রেসপন্স</p></div>
                     <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={99} suffix=".9%" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">আপটাইম</p></div>
                     <div className="py-4 border-l border-white/5"><div className="text-3xl md:text-5xl font-black text-[#00E5FF]"><SmoothCounter target={24} suffix="/7" /></div><p className="text-gray-500 font-bold uppercase text-[10px]">সাপোর্ট</p></div>
                 </div>
             </section>
-            {/* logo section */}
-            <section className="py-10 bg-black overflow-hidden">
-      <div className="container mx-auto px-4 mb-8 text-center">
-        <h2 className="text-2xl font-bold text-cyan-500">আমাদের পার্টনারসমূহ</h2>
-      </div>
+            {/* 1. logo section */}
+            <section className="py-10 bg-black overflow-hidden flex flex-col gap-8">
+                <div className="container mx-auto px-4 text-center">
+                    <h2 className="text-2xl font-bold text-cyan-500">আমাদের পার্টনারসমূহ</h2>
+                </div>
 
-      {/* স্লাইডার কন্টেইনার */}
-      <div className="relative flex overflow-hidden">
-        <motion.div
-          className="flex whitespace-nowrap"
-          animate={{
-            x: ["0%", "-50%"], // বাম দিকে স্লাইড হবে
-          }}
-          transition={{
-            duration: 20, // স্পিড কন্ট্রোল (যত বাড়বে তত ধীরে চলবে)
-            ease: "linear",
-            repeat: Infinity,
-          }}
-        >
-          {duplicatedLogos.map((logo, index) => (
-            <motion.div
-              key={index}
-              className="mx-8 w-40 h-24 flex items-center justify-center bg-gradient-to-r from-[#AAF2AD] to-[#F7FCF8]  rounded-lg shadow-sm border p-4 cursor-pointer"
-              // 3D Animation on Hover
-              whileHover={{ 
-                rotateY: 180, 
-                scale: 1.1,
-                transition: { duration: 0.6 } 
-              }}
-              style={{ perspective: 1000 }} // 3D গভীরতার জন্য
-            >
-              <img
-                src={logo}
-                alt="Partner Logo"
-                className="max-w-full max-h-full object-contain"
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+                {/* প্রথম স্লাইডার: বাম দিকে যাচ্ছে */}
+                <div className="relative flex overflow-hidden">
+                    <motion.div
+                        className="flex whitespace-nowrap"
+                        animate={{ x: ["0%", "-50%"] }}
+                        transition={{ duration: 20, ease: "linear", repeat: Infinity }}
+                    >
+                        {duplicatedLogos.map((logo, index) => (
+                            <motion.div
+                                key={index}
+                                className="mx-8 w-40 h-24 flex items-center justify-center bg-gradient-to-r from-[#AAF2AD] to-[#F7FCF8] rounded-lg shadow-sm border p-4 cursor-pointer"
+                                whileHover={{ rotateY: 180, scale: 1.1, transition: { duration: 0.6 } }}
+                                style={{ perspective: 1000 }}
+                            >
+                                <img src={logo} alt="Partner Logo" className="max-w-full max-h-full object-contain" />
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
 
-            {/* বাটন ট্যাব সেকশন */}
-            <section id="features-section" className="relative z-20 py-6 container mx-auto flex justify-center overflow-x-auto no-scrollbar pb-10">
-                <div className="flex gap-2 p-2 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl">
-                    {tabs.map((tab) => (
-                        <button
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id)}
-                            className={`relative px-6 py-3 rounded-xl text-[12px] md:text-[14px] font-bold transition-colors duration-200 overflow-hidden ${activeTab === tab.id ? 'text-black' : 'text-gray-400 hover:text-white'
-                                }`}
-                            style={{ WebkitTapHighlightColor: "transparent" }}
-                        >
-                            {/* অ্যাক্টিভ ট্যাবের ব্যাকগ্রাউন্ড এবং ঢেউ এনিমেশন */}
-                            {activeTab === tab.id && (
-                                <motion.div
-                                    layoutId="activeTabBg"
-                                    // মূল ব্যাকগ্রাউন্ড কালার (সায়ান)
-                                    className="absolute inset-0 bg-[#00E5FF] shadow-[0_0_20px_rgba(0,229,255,0.4)] rounded-xl overflow-hidden"
-                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                >
-                                    {/* এই অংশটি চোখে পড়ার মতো হলুদ ঢেউ তৈরি করবে */}
-                                    <motion.div
-                                        // পরিবর্তন এখানে: via-white/60 এর বদলে via-yellow-300/80 ব্যবহার করা হয়েছে
-                                        className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-yellow-300/80 to-transparent skew-x-[-20deg]"
-                                        initial={{ x: '-150%' }}
-                                        animate={{ x: '150%' }}
-                                        transition={{
-                                            repeat: Infinity,
-                                            duration: 1.3, // গতি একটু বাড়িয়ে দেওয়া হয়েছে
-                                            ease: "linear",
-                                            repeatDelay: 0.1
-                                        }}
-                                    />
-                                </motion.div>
-                            )}
-
-                            {/* টেক্সট এবং আইকন */}
-                            <span className="relative z-10 flex items-center gap-2">
-                                {tab.icon} {tab.label}
-                            </span>
-                        </button>
-                    ))}
+                {/* দ্বিতীয় স্লাইডার: ডান দিকে যাচ্ছে */}
+                <div className="relative flex overflow-hidden">
+                    <motion.div
+                        className="flex whitespace-nowrap"
+                        animate={{ x: ["-50%", "0%"] }} // এখানে ভ্যালু উল্টে দেওয়া হয়েছে
+                        transition={{ duration: 25, ease: "linear", repeat: Infinity }} // একটু ভিন্ন স্পিড দিতে পারেন
+                    >
+                        {/* এখানে অন্য কোন লোগো লিস্ট থাকলে সেটা ম্যাপ করতে পারেন */}
+                        {duplicatedLogos.map((logo, index) => (
+                            <motion.div
+                                key={`right-${index}`}
+                                className="mx-8 w-40 h-24 flex items-center justify-center bg-gradient-to-r from-[#AAF2AD] to-[#F7FCF8] rounded-lg shadow-sm border p-4 cursor-pointer"
+                                whileHover={{ rotateY: 180, scale: 1.1, transition: { duration: 0.6 } }}
+                                style={{ perspective: 1000 }}
+                            >
+                                <img src={logo} alt="Partner Logo" className="max-w-full max-h-full object-contain" />
+                            </motion.div>
+                        ))}
+                    </motion.div>
                 </div>
             </section>
 
-            {/* ডাইনামিক কন্টেন্ট এরিয়া */}
+            {/* ---2. btn tab section --- */}
+            <section
+                className="sticky top-0 z-40 w-full bg-[#020617]/80 backdrop-blur-xl border-b border-white/5 py-4 transition-all duration-300"
+            >
+                <div className="container mx-auto px-4 flex justify-center overflow-x-auto no-scrollbar">
+                    <div className="flex gap-2 p-2 bg-white/20 border border-white/10 rounded-2xl">
+                        {tabs.map((tab) => (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`relative px-6 py-3 rounded-xl text-[12px] md:text-[14px] font-bold transition-colors duration-200 overflow-hidden ${activeTab === tab.id ? 'text-black' : 'text-gray-400 hover:text-white'
+                                    }`}
+                                style={{ WebkitTapHighlightColor: "transparent" }}
+                            >
+                                {activeTab === tab.id && (
+                                    <motion.div
+                                        layoutId="activeTabBg"
+                                        className="absolute inset-0 bg-[#00E5FF] shadow-[0_0_20px_rgba(0,229,255,0.4)] rounded-xl overflow-hidden"
+                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                    >
+                                        <motion.div
+                                            className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-yellow-300/80 to-transparent skew-x-[-20deg]"
+                                            initial={{ x: '-150%' }}
+                                            animate={{ x: '150%' }}
+                                            transition={{ repeat: Infinity, duration: 1.3, ease: "linear", repeatDelay: 0.1 }}
+                                        />
+                                    </motion.div>
+                                )}
+                                <span className="relative z-10 flex items-center gap-2">
+                                    {tab.icon} {tab.label}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* 3. dynai mick content ariya */}
             <div className="container mx-auto px-6 max-w-7xl">
                 <AnimatePresence mode="wait">
                     <motion.div key={activeTab} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="text-center">
@@ -313,8 +312,8 @@ const HomePage = () => {
                 </AnimatePresence>
             </div>
 
-            {/* --- ৪. সচরাচর জিজ্ঞাসা (FAQ Section) --- */}
-            <section id="faq" className="relative z-10 pt-32 pb-20 container mx-auto px-6 max-w-4xl">
+            {/* --- ৪. (FAQ Section) --- */}
+            <section className="relative z-10 pt-32 pb-20 container mx-auto px-6 max-w-4xl">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-6xl font-black text-[#00E5FF] mb-4">সচরাচর জিজ্ঞাসা</h2>
                     <p className="text-gray-400 text-lg">আপনার সাধারণ প্রশ্নের উত্তর</p>

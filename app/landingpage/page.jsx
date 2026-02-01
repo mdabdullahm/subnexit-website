@@ -4,9 +4,9 @@ import Navbar from '@/Components/LandingPage/Navbar';
 const page = () => {
     return (
         <div>
-            <Navbar/>
+            {/* <Navbar/> */}
             <HomePage/>
-            <Footer/>
+            {/* <Footer/> */}
         </div>
     );
 };
